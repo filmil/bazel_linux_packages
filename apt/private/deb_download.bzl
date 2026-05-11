@@ -177,6 +177,7 @@ def _extract_packages(rctx, lockf):
         if arch not in data_files:
             data_files[arch] = []
 
+        # buildifier: disable=canonical-repository
         data_files[arch].append("@@{}//:{}".format(rctx.name, path))
     return data_files
 

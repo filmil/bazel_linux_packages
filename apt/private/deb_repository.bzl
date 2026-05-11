@@ -194,6 +194,8 @@ def _fetch_impl(rctx):
                 rctx.report_progress("Fetching package index: {}/{} for {}".format(dist, comp, arch))
                 (output, updates) = _fetch_package_index(rctx, uri, dist, comp, arch, rctx.attr.integrity)
                 integrity.update(updates)
+
+                # buildifier: disable=canonical-repository
                 package_files["@@{}//:{}".format(rctx.name, output)] = uri
 
     updated_integrity = _new_integrities(rctx.attr.integrity, integrity)
