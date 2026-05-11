@@ -144,6 +144,7 @@ def _fixup_executables(rctx, arch, busybox, patchelf, fix_relative_interpreter, 
         seen[interpreter.removeprefix(pwd)] = True
 
         if fix_relative_interpreter:
+            # buildifier: disable=external-path
             interpreter_path = "./external/{}/{}".format(rctx.attr.name, interpreter.removeprefix(pwd))
         if fix_absolute_interpreter:
             interpreter_path = interpreter
@@ -211,6 +212,7 @@ def _deb_install_impl(rctx):
 
     rctx.file(
         "defs.bzl",
+        # buildifier: disable=external-path
         'def with_repository_prefix(path): return "external/{}/{{}}".format(path)'.format(rctx.attr.name),
         executable = False,
     )

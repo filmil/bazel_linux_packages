@@ -42,6 +42,7 @@ def _get_repo_path(rctx, source, path):
         # the correct prefix to append to.
 
     else:
+        # buildifier: disable=canonical-repository
         repo = "@@" + rctx.attr.name.replace(rctx.attr.apparent_name, source)
     return Label("{}//:{}".format(repo, path))
 
