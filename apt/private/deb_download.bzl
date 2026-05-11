@@ -56,6 +56,8 @@ def _get_input_data_with_sources(rctx):
     return input_data
 
 _INDEX_BUILD_TMPL = """
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
+
 filegroup(
     name = "lockfile",
     srcs = ["lock.json"],
